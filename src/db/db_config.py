@@ -1,44 +1,30 @@
-import os
-from dotenv import load_dotenv
+"""
+Database configuration using the centralized config system.
 
-# Load environment variables from .env file
-load_dotenv()
+This module provides backward compatibility for the old DatabaseConfig class.
+"""
+
+from ..config import get_config
+
 
 class DatabaseConfig:
-    """Database configuration using environment variables."""
+    """Database configuration using the centralized config system."""
     
     def __init__(self):
-        self.host = os.getenv('DB_HOST')
-        self.database = os.getenv('DB_NAME')
-        self.user = os.getenv('DB_USER')
-        self.password = os.getenv('DB_PASSWORD')
-        self.sslmode = os.getenv('DB_SSLMODE', 'require')
-        self.channel_binding = os.getenv('DB_CHANNEL_BINDING', 'require')
+        """Initialize with centralized configuration."""
+        self.config = get_config()
     
     def get_connection_params(self):
         """Return database connection parameters as a dictionary."""
-        return {
-            'host': self.host,
-            'database': self.database,
-            'user': self.user,
-            'password': self.password,
-            'sslmode': self.sslmode,
-            'channel_binding': self.channel_binding
-        }
+        return self.config.get_database_config()
     
     def validate(self):
         """Validate that all required environment variables are set."""
-        required_vars = ['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASSWORD']
-        missing_vars = []
-        
-        for var in required_vars:
-            if not os.getenv(var):
-                missing_vars.append(var)
-        
-        if missing_vars:
-            raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}")
-        
+        # Configuration validation is handled in the Config class
         return True
 
-# Create a global instance
+
+# Create a global instance for backward compatibility
 db_config = DatabaseConfig()
+
+
