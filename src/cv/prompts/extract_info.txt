@@ -1,9 +1,9 @@
-Extract the items in this receipt and populate the following JSON, everything in lowercase:
+Extract the items in this receipt and populate the following (valid) JSON, everything in lowercase:
 
 {
     "{item}": {
         "quantity": {quantity},
-        "unit_price": {price / unit}
+        "unit_price": {price / unit (round to nearest cent)} 
     },
     ...
 }

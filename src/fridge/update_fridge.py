@@ -78,7 +78,7 @@ class FridgeUpdater:
             new_item: New item data
             
         Returns:
-            Weighted average unit price
+            Weighted average unit price (rounded to 2 decimal places)
         """
         existing_qty = existing_item["quantity"]
         existing_price = existing_item["unit_price"]
@@ -88,7 +88,8 @@ class FridgeUpdater:
         total_qty = existing_qty + new_qty
         total_value = (existing_qty * existing_price) + (new_qty * new_price)
         
-        return total_value / total_qty
+        # Round to 2 decimal places to avoid floating-point precision issues
+        return round(total_value / total_qty, 2)
     
     def merge_items(self, current_fridge: Dict[str, Dict[str, Any]], new_items: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
         """
@@ -112,9 +113,12 @@ class FridgeUpdater:
                 )
                 self.logger.info(f"Updated existing item '{item_name}': +{item_data['quantity']} units")
             else:
-                # New item - add directly
-                updated_fridge[item_name] = item_data.copy()
-                self.logger.info(f"Added new item '{item_name}': {item_data['quantity']} units @ ${item_data['unit_price']:.2f}")
+                # New item - add directly with rounded price
+                updated_fridge[item_name] = {
+                    "quantity": item_data["quantity"],
+                    "unit_price": round(float(item_data["unit_price"]), 2)
+                }
+                self.logger.info(f"Added new item '{item_name}': {item_data['quantity']} units @ ${updated_fridge[item_name]['unit_price']:.2f}")
         
         return updated_fridge
     

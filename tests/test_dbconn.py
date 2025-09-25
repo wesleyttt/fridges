@@ -2,10 +2,13 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import sys
 import os
+from pathlib import Path
 
-# Add the src directory to the Python path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-from db.db_config import db_config
+# Add the project root to the Python path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+from src.db.db_config import db_config
 
 def get_db_connection():
     """Create and return a database connection using secure config."""

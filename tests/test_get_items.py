@@ -1,16 +1,18 @@
 import sys
 import json
 import os
+from pathlib import Path
 
-# Add the src directory to the Python path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-from cv.get_items import scan_receipt
+# Add the project root to the Python path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+from src.cv.get_items import scan_receipt
 
 
 def test_scan_receipt():
     items = scan_receipt("tests/test_data/traderjoes1.jpg")
     print(items)
-    print(items[0])
 
 
 if __name__ == "__main__":

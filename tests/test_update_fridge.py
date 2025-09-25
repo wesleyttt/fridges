@@ -5,12 +5,15 @@ Test script for updating fridge with receipt items
 import sys
 import os
 import json
+from pathlib import Path
 
-# Add the src directory to the Python path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-from fridge.update_fridge import update_fridge
-from cv.get_items import scan_receipt
-from fridge.fridge_utils import get_fridge_by_id
+# Add the project root to the Python path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+from src.fridge.update_fridge import update_fridge
+from src.cv.get_items import scan_receipt
+from src.fridge.fridge_utils import get_fridge_by_id
 
 def test_update_fridge_with_direct_data():
     """Test updating fridge with direct items data."""
