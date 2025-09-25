@@ -1,0 +1,21 @@
+Below is a list of items and their quantities:
+
+{items_string}
+
+Generate a recipe that uses as many of these ingredients as possible. The recipe should be practical and easy to follow.
+Format your response as a JSON object with the following structure:
+{{
+    "name": "Recipe Name",
+    "ingredients": [
+        {{"name": "Ingredient 1", "quantity": "Amount"}},
+        {{"name": "Ingredient 2", "quantity": "Amount"}}
+    ],
+    "instructions": [
+        "Step 1: ...",
+        "Step 2: ..."
+    ],
+    "cooking_time": "Estimated cooking time",
+    "servings": "Number of servings"
+}}
+
+Only respond with the JSON object, no additional text.
