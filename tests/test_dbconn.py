@@ -5,7 +5,7 @@ import os
 
 # Add the src directory to the Python path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-from db_config import db_config
+from db.db_config import db_config
 
 def get_db_connection():
     """Create and return a database connection using secure config."""
@@ -71,7 +71,7 @@ def list_users():
         
         cursor.execute("""
             SELECT id, uid, name 
-            FROM users ORDER BY id DESC
+            FROM users ORDER BY id ASC
         """)
         
         users = cursor.fetchall()

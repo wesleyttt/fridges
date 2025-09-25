@@ -35,4 +35,3 @@ def get_fridge_by_id(uid):
         cursor.close()
         conn.close()
 
-print(get_fridge_by_id("1"))
