@@ -9,8 +9,8 @@ import psycopg2
 import os
 import sys
 
-# Add the current directory to the Python path for relative imports
-sys.path.append(os.path.dirname(__file__))
+# Add the src directory to the Python path for relative imports
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from db.dbconnect import get_db_connection
 
 def get_fridge_by_id(uid):
@@ -35,4 +35,3 @@ def get_fridge_by_id(uid):
         cursor.close()
         conn.close()
 
-print(get_fridge_by_id("1"))
