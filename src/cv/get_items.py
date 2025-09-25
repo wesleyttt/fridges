@@ -21,7 +21,32 @@ def load_prompt():
 def scan_receipt(image_path):
     """
     Input: image_path
-    Output: [{item: , quantity:}, ...]
+    Output: {item: {quantity: , unit_price: }}
+
+    example:
+    {
+        "pasta": {
+            "quantity": 1,
+            "unit_price": 1.49
+        },
+        "bananas": {
+            "quantity": 12,
+            "unit_price": 0.19
+        },
+        "milk": {
+            "quantity": 1,
+            "unit_price": 2.99
+        },
+        "lemon": {
+            "quantity": 1,
+            "unit_price": 1.49
+        },
+        "vanilla yogurt": {
+            "quantity": 1,
+            "unit_price": 3.29
+        },
+    ...
+    }
     """
     
     # Load the prompt template

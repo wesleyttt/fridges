@@ -1,0 +1,98 @@
+{
+    "pasta": {
+        "quantity": 1,
+        "unit_price": 1.49
+    },
+    "bananas": {
+        "quantity": 12,
+        "unit_price": 0.19
+    },
+    "milk": {
+        "quantity": 1,
+        "unit_price": 2.99
+    },
+    "lemon": {
+        "quantity": 1,
+        "unit_price": 1.49
+    },
+    "vanilla yogurt": {
+        "quantity": 1,
+        "unit_price": 3.29
+    },
+    "carrots": {
+        "quantity": 1,
+        "unit_price": 1.49
+    },
+    "strawberries": {
+        "quantity": 1,
+        "unit_price": 3.49
+    },
+    "avocados": {
+        "quantity": 1,
+        "unit_price": 2.99
+    },
+    "butter": {
+        "quantity": 1,
+        "unit_price": 3.19
+    },
+    "string cheese": {
+        "quantity": 1,
+        "unit_price": 3.99
+    },
+    "broccoli": {
+        "quantity": 1,
+        "unit_price": 2.49
+    },
+    "lentils": {
+        "quantity": 1,
+        "unit_price": 1.69
+    },
+    "spinach": {
+        "quantity": 6,
+        "unit_price": 1.99
+    },
+    "honey nut cereal": {
+        "quantity": 1,
+        "unit_price": 2.49
+    },
+    "chicken breasts": {
+        "quantity": 1,
+        "unit_price": 4.22
+    },
+    "apple": {
+        "quantity": 2,
+        "unit_price": 2.69
+    },
+    "potato": {
+        "quantity": 2,
+        "unit_price": 1.79
+    },
+    "cilantro": {
+        "quantity": 1,
+        "unit_price": 0.99
+    },
+    "beans": {
+        "quantity": 1,
+        "unit_price": 3.56
+    },
+    "hummus": {
+        "quantity": 1,
+        "unit_price": 1.99
+    },
+    "turkey": {
+        "quantity": 1,
+        "unit_price": 2.99
+    },
+    "italian sausage": {
+        "quantity": 1,
+        "unit_price": 3.99
+    },
+    "nut o's cereal": {
+        "quantity": 1,
+        "unit_price": 2.49
+    },
+    "harvest bread": {
+        "quantity": 2,
+        "unit_price": 1.99
+    }
+}

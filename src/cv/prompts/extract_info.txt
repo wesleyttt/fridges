@@ -1,10 +1,11 @@
-Extract the items in this receipt and populate the following JSON:
+Extract the items in this receipt and populate the following JSON, everything in lowercase:
 
-[
-    {
-        "item": {item},
+{
+    "{item}": {
         "quantity": {quantity},
-        "price": {price}
+        "unit_price": {price / unit}
     },
     ...
-]
+}
+
+Don't be overly specific on item. For example, "ORGANIC LF VANILLA YOG- 32 OZ." should just be "vanilla yogurt".
