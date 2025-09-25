@@ -1,7 +1,11 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
+import sys
+import os
+
+# Add the src directory to the Python path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
 from db_config import db_config
-from datetime import datetime
 
 def get_db_connection():
     """Create and return a database connection using secure config."""
@@ -19,30 +23,6 @@ def get_db_connection():
         print(f"❌ Error connecting to database: {e}")
         return None
 
-
-def get_user_by_id(user_id):
-    """Get user information by ID."""
-    conn = get_db_connection()
-    if not conn:
-        return None
-    
-    try:
-        cursor = conn.cursor(cursor_factory=RealDictCursor)
-        
-        cursor.execute("""
-            SELECT id, name, email, created_at, updated_at 
-            FROM users WHERE id = %s
-        """, (user_id,))
-        
-        user = cursor.fetchone()
-        return dict(user) if user else None
-        
-    except psycopg2.Error as e:
-        print(f"❌ Error getting user: {e}")
-        return None
-    finally:
-        cursor.close()
-        conn.close()
 
 def list_tables():
     """List all tables in the database."""
@@ -79,6 +59,7 @@ def list_tables():
         cursor.close()
         conn.close()
 
+
 def list_users():
     """List all users (without passwords)."""
     conn = get_db_connection()
@@ -89,8 +70,8 @@ def list_users():
         cursor = conn.cursor(cursor_factory=RealDictCursor)
         
         cursor.execute("""
-            SELECT id, name, email, created_at, updated_at 
-            FROM users ORDER BY created_at DESC
+            SELECT id, uid, name 
+            FROM users ORDER BY id DESC
         """)
         
         users = cursor.fetchall()
@@ -103,6 +84,7 @@ def list_users():
         cursor.close()
         conn.close()
 
+
 if __name__ == "__main__":
     print("🗄️  Database Table Listing")
     print("=" * 30)
@@ -114,3 +96,9 @@ if __name__ == "__main__":
         print(f"\n✅ Found {len(tables)} table(s) in the database")
     else:
         print("\n❌ No tables found or connection failed")
+
+    users = list_users()
+
+    print(f"\n✅ Found {len(users)} user(s) in the database")
+    for user in users:
+        print(f"  - {user['uid']} ({user['name']})")
