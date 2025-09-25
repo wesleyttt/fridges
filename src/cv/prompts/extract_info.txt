@@ -1,0 +1,10 @@
+Extract the items in this receipt and populate the following JSON:
+
+[
+    {
+        "item": {item},
+        "quantity": {quantity},
+        "price": {price}
+    },
+    ...
+]
